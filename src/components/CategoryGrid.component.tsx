@@ -1,5 +1,6 @@
 import CategoryCard from "./CategoryCard.component";
-const Folder = "/src/assets/browsecategory/1040";
+const Folder =
+  "https://raw.githubusercontent.com/BasavarajMuttagi/apple-music/main/src/assets/browsecategory/1040";
 function CategoryGrid() {
   const imageNameArray: any = [
     "1040x346sr.webp",
