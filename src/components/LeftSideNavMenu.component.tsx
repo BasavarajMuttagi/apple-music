@@ -11,14 +11,13 @@ import allplaylists from "../assets/allplaylists.svg";
 import favoritesongs from "../assets/favoritesongs.svg";
 import search from "../assets/searchicon1.svg";
 import { CiSearch } from "react-icons/ci";
-import { IoCloseOutline } from "react-icons/io5";
+
+
 function LeftSideNavMenu() {
   return (
     <nav className="relative overflow-auto space-y-1 bg-[#282828] h-dvh  text-white text-opacity-85 text-lg md:w-[260px] md:text-base">
-      <div className=" md:hidden">
-        <IoCloseOutline className="absolute h-9 w-9 top-1 left-3 text-brand" />
-      </div>
-      <div className="flex flex-col items-center p-2 md:items-start  md:p-7">
+
+      <div className="hidden md:flex flex-col items-center  p-2 md:items-start  md:p-7">
         <img src={logo} alt="logo" />
       </div>
 

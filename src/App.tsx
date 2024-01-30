@@ -1,12 +1,12 @@
+import { RouterProvider } from "react-router-dom";
 import "./App.css";
-import LeftSideNavMenu from "./components/LeftSideNavMenu.component";
+
+import routes from "./routes/routes";
 
 function App() {
   return (
     <>
-      <div className="bg-black  w-screen">
-        <LeftSideNavMenu />
-      </div>
+      <RouterProvider router={routes} />
     </>
   );
 }
