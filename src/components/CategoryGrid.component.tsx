@@ -56,7 +56,7 @@ function CategoryGrid() {
   ];
 
   return (
-    <div className="bg-[#1f1f1f] h-full overflow-y-auto gap-5 p-5 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+    <div className="no-scrollbar bg-[#1f1f1f] h-full overflow-y-auto gap-5 p-5 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
       {imageNameArray.map((eachImage: string) => (
         <CategoryCard key={eachImage} imagePath={`${Folder}/${eachImage}`} />
       ))}

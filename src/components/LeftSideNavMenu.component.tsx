@@ -15,7 +15,7 @@ import { CiSearch } from "react-icons/ci";
 
 function LeftSideNavMenu() {
   return (
-    <nav className="relative overflow-auto space-y-1 bg-[#282828] h-dvh  text-white text-opacity-85 text-lg md:w-[260px] md:text-base">
+    <nav className="no-scrollbar relative overflow-auto space-y-1 bg-[#282828] h-dvh  text-white text-opacity-85 text-lg md:w-[260px] md:text-base">
 
       <div className="hidden md:flex flex-col items-center  p-2 md:items-start  md:p-7">
         <img src={logo} alt="logo" />
