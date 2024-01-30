@@ -53,7 +53,7 @@ function HomeLayout() {
         <div
           ref={navRef}
           tabIndex={-1}
-          className="-z-10 absolute w-full  -translate-y-full duration-300 focus:translate-y-0 focus:duration-300 md:translate-y-0 md:relative md:w-fit"
+          className="-z-10 absolute w-full  -translate-y-full duration-300 focus:translate-y-0 focus:duration-300 md:translate-y-0 md:relative md:w-fit md:z-0"
         >
           <LeftSideNavMenu />
         </div>
