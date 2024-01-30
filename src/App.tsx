@@ -4,7 +4,7 @@ import LeftSideNavMenu from "./components/LeftSideNavMenu.component";
 function App() {
   return (
     <>
-      <div className="bg-[#282828] min-h-dvh w-screen">
+      <div className="bg-black  w-screen">
         <LeftSideNavMenu />
       </div>
     </>

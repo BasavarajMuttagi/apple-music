@@ -9,103 +9,164 @@ import songs from "../assets/songs.svg";
 import madeforyou from "../assets/madeforyou.svg";
 import allplaylists from "../assets/allplaylists.svg";
 import favoritesongs from "../assets/favoritesongs.svg";
+import search from "../assets/searchicon1.svg";
 import { CiSearch } from "react-icons/ci";
+import { IoCloseOutline } from "react-icons/io5";
 function LeftSideNavMenu() {
   return (
-    <div className="flex flex-col justify-start items-center h-full w-full md:items-start">
-      <nav className="font-lato font-semibold text-white text-opacity-85 mx-auto  p-4 space-y-8 w-[330px]  md:w-[300px]">
-        <div className="w-full">
-          <img src={logo} alt="logo" />
-        </div>
-        {/* main section */}
-        <div className="space-y-6 w-full">
-          <div className="relative ">
+    <nav className="relative overflow-auto space-y-1 bg-[#282828] h-dvh  text-white text-opacity-85 text-lg md:w-[260px] md:text-base">
+      <div className=" md:hidden">
+        <IoCloseOutline className="absolute h-9 w-9 top-1 left-3 text-brand" />
+      </div>
+      <div className="flex flex-col items-center p-2 md:items-start  md:p-7">
+        <img src={logo} alt="logo" />
+      </div>
+
+      <div className="px-7 space-y-5 md:p-5">
+        <div className="hidden  md:block">
+          <div className="relative">
             <input
               type="text"
               placeholder="Search"
-              className="w-full text-xs p-2 bg-[#1f1f1f] border-[1px] border-[#ffffff26] rounded-[0.280rem] px-7 focus:outline outline-2 outline-brand focus:placeholder:hidden"
+              className="p-1   border-[1px] bg-[#1f1f1f] border-[#ffffff26] rounded-sm focus:outline outline-2 outline-brand px-7 md:max-w-[220px]"
             />
-            <span className="absolute top-[0.5rem] left-[0.5rem]">
-              <CiSearch className="h-4 w-4" />
+            <span className="absolute top-[0.5rem] left-1">
+              <CiSearch className="h-5 w-5 text-white" />
             </span>
           </div>
-          <div>
-            <ul className="space-y-2">
-              <li className="flex items-center space-x-4">
-                <span>
-                  <img src={listen} alt={"listen"} className="stroke-brand" />
-                </span>
-                <span>Listen Now</span>
-              </li>
-              <li className="flex items-center space-x-4">
-                <span>
-                  <img src={browse} alt={"browse"} />
-                </span>
-                <span>Browse</span>
-              </li>
-              <li className="flex items-center space-x-4">
-                <span>
-                  <img src={radio} alt={"radio"} />
-                </span>
-                <span>Radio</span>
-              </li>
-            </ul>
-          </div>
         </div>
-        {/* library section */}
-        <div className="w-full">
-          <ul className="space-y-2">
-            <li className="flex items-center space-x-4">
+        <div>
+          <ul className="md:space-y-2">
+            <li className="flex items-center space-x-4 rounded-md p-1 cursor-pointer hover:bg-[#ebebf51a]">
               <span>
-                <img src={recent} alt={"recent"} />
+                <img
+                  src={listen}
+                  alt={"listen"}
+                  className="h-8 w-8 md:h-6 md:w-6"
+                />
+              </span>
+              <span>Listen Now</span>
+            </li>
+            <li className="flex items-center space-x-4 rounded-md p-1 cursor-pointer hover:bg-[#ebebf51a]">
+              <span>
+                <img
+                  src={browse}
+                  alt={"browse"}
+                  className="h-8 w-8 md:h-6 md:w-6"
+                />
+              </span>
+              <span>Browse</span>
+            </li>
+            <li className="flex items-center space-x-4 rounded-md p-1 cursor-pointer hover:bg-[#ebebf51a]">
+              <span>
+                <img
+                  src={radio}
+                  alt={"radio"}
+                  className="h-8 w-8 md:h-6 md:w-6"
+                />
+              </span>
+              <span>Radio</span>
+            </li>
+            <li className="flex items-center space-x-4 rounded-md p-1 cursor-pointer hover:bg-[#ebebf51a]">
+              <span>
+                <img
+                  src={search}
+                  alt={"search"}
+                  className="h-8 w-8 md:h-6 md:w-6"
+                />
+              </span>
+              <span>Search</span>
+            </li>
+          </ul>
+        </div>
+
+        <div className="space-y-1">
+          <h3 className="text-sm text-[#98989d] p-2 font-bold -ml-3">
+            Library
+          </h3>
+          <ul className="md:space-y-2">
+            <li className="flex items-center space-x-4 rounded-md p-1 cursor-pointer hover:bg-[#ebebf51a]">
+              <span>
+                <img
+                  src={recent}
+                  alt={"recent"}
+                  className="h-8 w-8 md:h-6 md:w-6"
+                />
               </span>
               <span>Recently Added</span>
             </li>
-            <li className="flex items-center space-x-4">
+            <li className="flex items-center space-x-4 rounded-md p-1 cursor-pointer hover:bg-[#ebebf51a]">
               <span>
-                <img src={artists} alt={"artists"} />
+                <img
+                  src={artists}
+                  alt={"artists"}
+                  className="h-8 w-8 md:h-6 md:w-6"
+                />
               </span>
               <span>Artists</span>
             </li>
-            <li className="flex items-center space-x-4">
+            <li className="flex items-center space-x-4 rounded-md p-1 cursor-pointer hover:bg-[#ebebf51a]">
               <span>
-                <img src={albums} alt={"albums"} />
+                <img
+                  src={albums}
+                  alt={"albums"}
+                  className="h-8 w-8 md:h-6 md:w-6"
+                />
               </span>
               <span>Albums</span>
             </li>
-            <li className="flex items-center space-x-4">
+            <li className="flex items-center space-x-4 rounded-md p-1 cursor-pointer hover:bg-[#ebebf51a]">
               <span>
-                <img src={songs} alt={"songs"} />
+                <img
+                  src={songs}
+                  alt={"songs"}
+                  className="h-8 w-8 md:h-6 md:w-6"
+                />
               </span>
               <span>Songs</span>
             </li>
-            <li className="flex items-center space-x-4">
+            <li className="flex items-center space-x-4 rounded-md p-1 cursor-pointer hover:bg-[#ebebf51a]">
               <span>
-                <img src={madeforyou} alt={"madeforyou"} />
+                <img
+                  src={madeforyou}
+                  alt={"madeforyou"}
+                  className="h-8 w-8 md:h-6 md:w-6"
+                />
               </span>
               <span>Made for You</span>
             </li>
           </ul>
         </div>
-        {/* playlist section */}
-        <div className="w-full">
-          <ul className="space-y-2">
-            <li className="flex items-center space-x-4">
+
+        <div className="space-y-1">
+          <h3 className="text-sm text-[#98989d] p-2 font-bold -ml-3">
+            Playlists
+          </h3>
+          <ul className="md:space-y-2">
+            <li className="flex items-center space-x-4 rounded-md p-1 cursor-pointer hover:bg-[#ebebf51a]">
               <span>
-                <img src={allplaylists} alt={"allplaylists"} />
+                <img
+                  src={allplaylists}
+                  alt={"allplaylists"}
+                  className="h-8 w-8 md:h-6 md:w-6"
+                />
               </span>
               <span>All Playlists</span>
             </li>
-            <li className="flex items-center space-x-4">
+            <li className="flex items-center space-x-4 rounded-md p-1 cursor-pointer hover:bg-[#ebebf51a]">
               <span>
-                <img src={favoritesongs} alt={"favoritesongs"} />
+                <img
+                  src={favoritesongs}
+                  alt={"favoritesongs"}
+                  className="h-8 w-8 md:h-6 md:w-6"
+                />
               </span>
               <span>Favorite Songs</span>
             </li>
           </ul>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 }
 
