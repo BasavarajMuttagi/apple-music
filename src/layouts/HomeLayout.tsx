@@ -18,8 +18,8 @@ function HomeLayout() {
   };
 
   return (
-    <div>
-      <div className="fixed top-0 left-0 w-full ">
+    <div className="md:flex md:h-screen">
+      <div className="fixed top-0 left-0 w-full md:static md:w-fit">
         <div className="p-2 flex justify-between items-center bg-[#282828]  md:hidden">
           <div>
             <input
@@ -53,15 +53,13 @@ function HomeLayout() {
         <div
           ref={navRef}
           tabIndex={-1}
-          className="-z-10 absolute w-full  -translate-y-full duration-300 focus:translate-y-0 focus:duration-300 md:translate-y-0 md:block"
+          className="-z-10 absolute w-full  -translate-y-full duration-300 focus:translate-y-0 focus:duration-300 md:translate-y-0 md:relative md:w-fit"
         >
           <LeftSideNavMenu />
         </div>
       </div>
 
-      <div className="absolute bg-[#1f1f1f] -z-20">
-        <Outlet />
-      </div>
+      <Outlet />
     </div>
   );
 }
