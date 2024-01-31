@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import { IoCloseOutline, IoReorderTwoOutline } from "react-icons/io5";
 import logo from "../assets/logo.svg";
 import profile from "../assets/profile.svg";
+import MusicPlayer from "../components/MusicPlayer.component";
 function HomeLayout() {
   const [isChecked, setIsChecked] = useState(false);
   const navRef = useRef<any>(null);
@@ -19,7 +20,7 @@ function HomeLayout() {
 
   return (
     <div className="md:flex md:h-screen">
-      <div className="fixed top-0 left-0 w-full md:static md:w-fit">
+      <div className="fixed top-0 left-0 w-full md:static md:w-fit ">
         <div className="p-2 flex justify-between items-center bg-[#282828]  md:hidden">
           <div>
             <input
@@ -59,7 +60,12 @@ function HomeLayout() {
         </div>
       </div>
 
-      <Outlet />
+      <div className="max-w-full">
+        <div className="fixed w-full p-2  bottom-0 md:static md:p-0 md:rounded-none">
+          <MusicPlayer />
+        </div>
+        <Outlet />
+      </div>
     </div>
   );
 }

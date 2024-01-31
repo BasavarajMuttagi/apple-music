@@ -57,7 +57,10 @@ function CategoryGrid() {
   ];
 
   return (
-    <div className="no-scrollbar bg-[#1f1f1f] h-full overflow-y-auto">
+    <div className="font-nunito no-scrollbar bg-[#1f1f1f] h-full overflow-y-auto mt-12 md:mt-0">
+      <h1 className="text-white text-opacity-85 text-xl ml-5 mt-5">
+        Browse Categories
+      </h1>
       <div className="gap-5 p-5 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
         {imageNameArray.map((eachImage: string) => (
           <CategoryCard key={eachImage} imagePath={`${Folder}/${eachImage}`} />
