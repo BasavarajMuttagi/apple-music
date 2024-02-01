@@ -26,13 +26,13 @@ function MusicPlayerWithLyrics({
     <div className="backdrop-blur-sm bg-black/60 h-dvh w-dvw">
       <div>
         <FaChevronDown
-          className="absolute h-7 w-7 text-white text-opacity-80 top-2  left-40 z-50"
+          className="sticky h-7 w-7 text-white text-opacity-80 top-2  left-[48%] z-50 md:left-[48%]"
           type="button"
           onClick={() => closeLyrics()}
         />
       </div>
 
-      <div className="flex flex-col justify-around items-center h-full p-5">
+      <div className="flex flex-col justify-around items-center h-full p-5 md:max-w-[60%] md:mx-auto">
         <div
           className={twMerge(
             "space-y-2",
@@ -63,7 +63,7 @@ function MusicPlayerWithLyrics({
         <div
           className={twMerge(
             "text-white text-wrap  text-center font-bold font-nunito overflow-y-auto no-scrollbar  text-xl w-screen h-[40%]",
-            showLyrics ? "block masked-overflow" : "hidden"
+            showLyrics ? "block masked-overflow md:max-w-[70%] " : "hidden"
           )}
         >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ducimus
@@ -89,7 +89,7 @@ function MusicPlayerWithLyrics({
           asperiores non maxime eum est distinctio alias dignissimos doloribus
           odio magni quaerat id blanditiis tempore, nobis corporis.
         </div>
-        <div className="space-y-6 w-full">
+        <div className="space-y-6 w-full md:max-w-[70%]">
           <div className="flex items-center">
             {/* <GetVolumeIndicator volume={volume} /> */}
             <input
