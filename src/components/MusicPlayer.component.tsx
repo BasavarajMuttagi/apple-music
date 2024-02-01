@@ -41,7 +41,7 @@ function MusicPlayer() {
     audioPlayerRef.current.muted = isMute;
   };
 
-  const setVolume = () => {
+  const updateVolume = () => {
     audioPlayerRef.current.volume = volume;
   };
 
@@ -70,7 +70,7 @@ function MusicPlayer() {
   };
 
   useEffect(() => {
-    setVolume();
+    updateVolume();
   }, [volume]);
 
   useEffect(() => {
@@ -172,7 +172,7 @@ function MusicPlayer() {
               max={1}
               step={0.1}
               onChange={(e) => {
-                SetVolume(parseFloat(e.target.value)), setVolume();
+                SetVolume(parseFloat(e.target.value)), updateVolume();
               }}
               className="h-[4px] bg-white"
             />
@@ -186,7 +186,17 @@ function MusicPlayer() {
             showMusicPlayerWithLyrics ? "block" : "hidden"
           )}
         >
-          <MusicPlayerWithLyrics closeLyrics={closeLyrics} />
+          <MusicPlayerWithLyrics
+            closeLyrics={closeLyrics}
+            controls={{
+              SetVolume,
+              updateVolume,
+              updateSeekBar,
+              setIsMute,
+              setIsPlaying,
+            }}
+            data={{ seekBarPosition, volume, isPlaying, isMute }}
+          />
         </div>
       }
     </>
@@ -199,13 +209,13 @@ const GetVolumeIndicator = ({ volume }: { volume: number }) => {
   if (volume == 0) {
     return <IoVolumeOff className="h-5 w-5" />;
   }
-  if (volume > 0 && volume <= 33) {
+  if (volume > 0 && volume <= 33/100) {
     return <IoVolumeLow className="h-5 w-5" />;
   }
-  if (volume > 33 && volume <= 66) {
+  if (volume > 33/100 && volume <= 66/100) {
     return <IoVolumeMedium className="h-5 w-5" />;
   }
-  if (volume > 66) {
+  if (volume > 66/100) {
     return <IoVolumeHigh className="h-5 w-5" />;
   }
 

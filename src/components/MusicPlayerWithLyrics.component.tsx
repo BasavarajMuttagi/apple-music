@@ -13,10 +13,15 @@ import { FaPlay } from "react-icons/fa";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { FaChevronDown } from "react-icons/fa";
-function MusicPlayerWithLyrics({ closeLyrics }: any) {
-  const [volume, SetVolume] = useState(0);
+import { FaPause } from "react-icons/fa6";
+import { FaVolumeMute } from "react-icons/fa";
+function MusicPlayerWithLyrics({
+  closeLyrics,
+  controls: { SetVolume, updateVolume, updateSeekBar, setIsMute, setIsPlaying },
+  data: { seekBarPosition, volume, isPlaying, isMute },
+}: any) {
   const [showLyrics, SetShowLyrics] = useState(false);
-  const [PlayerPosition, SetPlayerPosition] = useState(0);
+
   return (
     <div className="backdrop-blur-sm bg-black/60 h-dvh w-dvw">
       <div>
@@ -86,29 +91,58 @@ function MusicPlayerWithLyrics({ closeLyrics }: any) {
         </div>
         <div className="space-y-6 w-full">
           <div className="flex items-center">
-            <GetVolumeIndicator volume={volume} />
+            {/* <GetVolumeIndicator volume={volume} /> */}
             <input
               type="range"
-              value={PlayerPosition}
+              value={seekBarPosition}
               min={0}
               max={100}
-              onChange={(e) => SetPlayerPosition(parseInt(e.target.value))}
+              onChange={(e) => updateSeekBar(parseInt(e.target.value))}
               className="h-[4px] bg-white w-full"
             />
           </div>
           <div className=" text-white text-opacity-85 flex justify-between">
             <IoPlayBack className="h-8 w-8 opacity-75 hover:opacity-95" />
-            <FaPlay className="h-8 w-8 opacity-75 hover:opacity-95" />
+            {!isPlaying ? (
+              <FaPlay
+                className="h-5 w-5 opacity-75 hover:opacity-95"
+                onClick={() => setIsPlaying(true)}
+              />
+            ) : (
+              <FaPause
+                className="h-5 w-5 opacity-75 hover:opacity-95"
+                onClick={() => setIsPlaying(false)}
+              />
+            )}
             <IoPlayForward className="h-8 w-8 opacity-75 hover:opacity-95" />
           </div>
           <div className="flex items-center">
-            <GetVolumeIndicator volume={volume} />
+            {!isMute && (
+              <span
+                onClick={() => {
+                  setIsMute(true);
+                }}
+              >
+                <GetVolumeIndicator volume={volume} />
+              </span>
+            )}
+            {isMute && (
+              <FaVolumeMute
+                className="h-5 w-5 text-white text-opacity-85"
+                onClick={() => {
+                  setIsMute(false);
+                }}
+              />
+            )}
             <input
               type="range"
               value={volume}
               min={0}
-              max={100}
-              onChange={(e) => SetVolume(parseInt(e.target.value))}
+              max={1}
+              step={0.1}
+              onChange={(e) => {
+                SetVolume(parseFloat(e.target.value)), updateVolume();
+              }}
               className="h-[4px] bg-white w-full"
             />
           </div>
@@ -136,17 +170,17 @@ export default MusicPlayerWithLyrics;
 
 const GetVolumeIndicator = ({ volume }: { volume: number }) => {
   if (volume == 0) {
-    return <IoVolumeOff className="h-5 w-5 text-white" />;
+    return <IoVolumeOff className="h-5 w-5 text-white text-opacity-85" />;
   }
-  if (volume > 0 && volume <= 33) {
-    return <IoVolumeLow className="h-5 w-5 text-white" />;
+  if (volume > 0 && volume <= 33 / 100) {
+    return <IoVolumeLow className="h-5 w-5 text-white text-opacity-85" />;
   }
-  if (volume > 33 && volume <= 66) {
-    return <IoVolumeMedium className="h-5 w-5 text-white" />;
+  if (volume > 33 / 100 && volume <= 66 / 100) {
+    return <IoVolumeMedium className="h-5 w-5 text-white text-opacity-85" />;
   }
-  if (volume > 66) {
-    return <IoVolumeHigh className="h-5 w-5 text-white" />;
+  if (volume > 66 / 100) {
+    return <IoVolumeHigh className="h-5 w-5 text-white text-opacity-85" />;
   }
 
-  return <IoVolumeOff className="h-5 w-5 text-white" />;
+  return <IoVolumeOff className="h-5 w-5 text-white text-opacity-85" />;
 };
