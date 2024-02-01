@@ -8,57 +8,60 @@ import {
   IoVolumeOff,
 } from "react-icons/io5";
 import song from "../assets/song.webp";
+import lyrics from "../assets/lyrics.svg";
+import lyricsafter from "../assets/lyricsafter.svg";
 import { FaPlay } from "react-icons/fa";
 import { useState } from "react";
+import { twMerge } from "tailwind-merge";
+import { FaChevronDown } from "react-icons/fa";
 function MusicPlayerWithLyrics({ closeLyrics }: any) {
   const [volume, SetVolume] = useState(0);
+  const [showLyrics, SetShowLyrics] = useState(false);
   const [PlayerPosition, SetPlayerPosition] = useState(0);
   return (
-    <div className="absolute top-0 left-0 h-screen w-screen  flex justify-center items-center p-2 backdrop-blur-sm bg-black/70">
-      <div className="absolute top-5 left-5">
-        <IoCloseOutline
-          className="h-10 w-10 text-brand"
+    <div className="backdrop-blur-sm bg-black/60 h-dvh w-dvw">
+      <div>
+        <FaChevronDown
+          className="absolute h-7 w-7 text-white text-opacity-80 top-2  left-40 z-50"
           type="button"
           onClick={() => closeLyrics()}
         />
       </div>
 
-      <div className="flex items-center">
-        <div className="col-span-1 hidden md:block space-y-8">
-          <img
-            src={song}
-            alt={song}
-            className="aspect-square rounded-lg w-[40rem] h-[40rem]"
-          />
-          <div className="md:order-3 hidden md:flex items-center space-x-1">
-            <GetVolumeIndicator volume={volume} />
-            <input
-              type="range"
-              value={PlayerPosition}
-              min={0}
-              max={100}
-              onChange={(e) => SetPlayerPosition(parseInt(e.target.value))}
-              className="h-[4px] bg-white w-[38rem]"
+      <div className="flex flex-col justify-around items-center h-full p-5">
+        <div
+          className={twMerge(
+            "space-y-2",
+            showLyrics
+              ? "flex flex-row  items-center justify-evenly  w-full rounded-lg p-2"
+              : ""
+          )}
+        >
+          <div className={twMerge("flex", showLyrics ? "flex-none h-12" : "")}>
+            <img
+              src={song}
+              alt={song}
+              className={twMerge("aspect-square rounded-lg")}
+              onClick={() => SetShowLyrics(false)}
             />
           </div>
-          <div className="flex justify-around text-white text-opacity-85">
-            <IoPlayBack className="h-8 w-8 opacity-75 hover:opacity-95" />
-            <FaPlay className="h-8 w-8 opacity-75 hover:opacity-95" />
-            <IoPlayForward className="h-8 w-8 opacity-75 hover:opacity-95" />
-          </div>
-          <div className="md:order-3 hidden md:flex items-center space-x-1">
-            <GetVolumeIndicator volume={volume} />
-            <input
-              type="range"
-              value={volume}
-              min={0}
-              max={100}
-              onChange={(e) => SetVolume(parseInt(e.target.value))}
-              className="h-[4px] bg-white w-[38rem]"
-            />
+          <div
+            className={twMerge(
+              "text-white text-center text-lg font-nunito font-semibold",
+              showLyrics
+                ? "text-white text-center text-lg font-nunito font-semibold"
+                : ""
+            )}
+          >
+            One Love - Single
           </div>
         </div>
-        <div className="h-30 text-white text-wrap  text-center p-4  font-bold font-nunito overflow-y-auto no-scrollbar masked-overflow text-xl w-screen  md:text-4xl md:w-[40rem] md:h-full">
+        <div
+          className={twMerge(
+            "text-white text-wrap  text-center font-bold font-nunito overflow-y-auto no-scrollbar  text-xl w-screen h-[40%]",
+            showLyrics ? "block masked-overflow" : "hidden"
+          )}
+        >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ducimus
           voluptas pariatur esse deleniti, quia cum ex alias rem et quidem
           perferendis blanditiis qui beatae suscipit quod. Dignissimos eveniet
@@ -81,6 +84,49 @@ function MusicPlayerWithLyrics({ closeLyrics }: any) {
           officiis veniam, autem nobis iusto dicta! Esse laudantium tempora,
           asperiores non maxime eum est distinctio alias dignissimos doloribus
           odio magni quaerat id blanditiis tempore, nobis corporis.
+        </div>
+        <div className="space-y-6 w-full">
+          <div className="flex items-center">
+            <GetVolumeIndicator volume={volume} />
+            <input
+              type="range"
+              value={PlayerPosition}
+              min={0}
+              max={100}
+              onChange={(e) => SetPlayerPosition(parseInt(e.target.value))}
+              className="h-[4px] bg-white w-full"
+            />
+          </div>
+          <div className=" text-white text-opacity-85 flex justify-between">
+            <IoPlayBack className="h-8 w-8 opacity-75 hover:opacity-95" />
+            <FaPlay className="h-8 w-8 opacity-75 hover:opacity-95" />
+            <IoPlayForward className="h-8 w-8 opacity-75 hover:opacity-95" />
+          </div>
+          <div className="flex items-center">
+            <GetVolumeIndicator volume={volume} />
+            <input
+              type="range"
+              value={volume}
+              min={0}
+              max={100}
+              onChange={(e) => SetVolume(parseInt(e.target.value))}
+              className="h-[4px] bg-white w-full"
+            />
+          </div>
+          <div>
+            <img
+              src={lyrics}
+              alt={lyrics}
+              className={twMerge("h-10 w-10", showLyrics ? "hidden" : "block")}
+              onClick={() => SetShowLyrics(!showLyrics)}
+            />
+            <img
+              src={lyricsafter}
+              alt={lyricsafter}
+              className={twMerge("h-10 w-10", showLyrics ? "block" : "hidden")}
+              onClick={() => SetShowLyrics(!showLyrics)}
+            />
+          </div>
         </div>
       </div>
     </div>
