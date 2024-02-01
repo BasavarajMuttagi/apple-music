@@ -1,5 +1,4 @@
 import {
-  IoCloseOutline,
   IoPlayBack,
   IoPlayForward,
   IoVolumeHigh,
